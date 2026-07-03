@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Sample survey report | Brou Aerial Surveys</title>
+  <meta name="description" content="A sample drone roof survey record: findings, ratings and imagery in the exact format clients receive. Real survey photography, anonymised." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#F7F4ED" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316455A'/%3E%3Cpath d='M16 7v18M7 16h18' stroke='%23F3B838' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./assets/icon-180.png" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,420;0,9..144,560;1,9..144,420&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=20260703c" />
+  <style>
+    /* ---- report document styles (page-specific) ---- */
+    :root {
+      --ok: #2E7D52; --ok-soft: #DFF0E5;
+      --warn-ink: var(--amber-ink); --warn-soft: var(--amber-soft);
+      --refer: #C4442A; --refer-soft: #F7DED6;
+    }
+    .report { max-width: 900px; margin: 0 auto; padding: 130px 24px 0; }
+    .report-cover {
+      position: relative; overflow: hidden;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r-lg); padding: clamp(1.8rem, 4vw, 3rem);
+      box-shadow: var(--shadow-soft);
+    }
+    .report-cover::after {
+      content: "SAMPLE"; position: absolute; right: -28px; top: 24px;
+      transform: rotate(38deg);
+      background: var(--amber); color: var(--ink);
+      font-weight: 700; letter-spacing: 0.24em; font-size: 0.8rem;
+      padding: 0.45rem 3.2rem;
+    }
+    .report h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin: 0.4rem 0 1.6rem; }
+    .report-meta {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      border-top: 1px solid var(--line); padding-top: 1.4rem;
+    }
+    .report-meta div span { display: block; font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.2rem; }
+    .report-meta div strong { font-size: 0.98rem; font-weight: 600; }
+    .notice {
+      margin-top: 1.4rem;
+      background: var(--warn-soft); color: var(--warn-ink);
+      border-radius: var(--r-md); padding: 1.1rem 1.4rem;
+      font-size: 0.95rem;
+    }
+    .report-section { margin-top: 3.2rem; }
+    .report-section > h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.1rem; }
+    .legend { display: grid; gap: 0.8rem; }
+    .legend li {
+      list-style: none; display: flex; gap: 0.9rem; align-items: baseline;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r-md); padding: 0.9rem 1.2rem; font-size: 0.95rem; color: var(--muted);
+    }
+    .tag { flex: 0 0 auto; display: inline-block; padding: 0.22rem 0.8rem; border-radius: var(--r-pill); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; }
+    .tag-record  { background: var(--ok-soft);    color: var(--ok); }
+    .tag-monitor { background: var(--warn-soft);  color: var(--warn-ink); }
+    .tag-refer   { background: var(--refer-soft); color: var(--refer); }
+    .legend-note { font-size: 0.92rem; color: var(--muted); margin-top: 0.9rem; max-width: 60ch; }
+    .sum-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--line); }
+    .sum-table th, .sum-table td { text-align: left; padding: 0.85rem 1.1rem; font-size: 0.92rem; }
+    .sum-table th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-bottom: 1px solid var(--line); }
+    .sum-table tr + tr td { border-top: 1px solid var(--line); }
+    .sum-table td:first-child { font-family: var(--font-mono); color: var(--deep); }
+    .finding {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r-lg); overflow: hidden; margin-bottom: 1.4rem;
+    }
+    .finding img { width: 100%; height: clamp(260px, 42vw, 420px); object-fit: cover; }
+    .finding-body { padding: 1.4rem 1.7rem 1.6rem; }
+    .finding-head { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+    .finding-head .pass { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--deep); text-transform: uppercase; }
+    .finding h3 { font-size: 1.3rem; margin-right: auto; }
+    .finding p { color: var(--muted); font-size: 0.97rem; }
+    .finding p + p { margin-top: 0.55rem; }
+    .finding p strong { color: var(--ink); }
+    .plain-list { list-style: none; display: grid; gap: 0.6rem; }
+    .plain-list li { position: relative; padding-left: 1.6rem; color: var(--muted); font-size: 0.97rem; }
+    .plain-list li::before {
+      content: ""; position: absolute; left: 0; top: 0.3rem; width: 15px; height: 15px; border-radius: 50%;
+      background: var(--deep-soft);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.6 2.6L12 5.5' fill='none' stroke='%2316455A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 10px; background-position: center; background-repeat: no-repeat;
+    }
+    .report-cta {
+      margin-top: 3.2rem;
+      background: var(--deep); color: #fff;
+      border-radius: var(--r-lg); padding: clamp(1.8rem, 4vw, 2.8rem);
+      display: flex; align-items: center; justify-content: space-between; gap: 1.6rem; flex-wrap: wrap;
+      box-shadow: var(--shadow-soft);
+    }
+    .report-cta h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+    .report-cta h2 em { color: var(--amber); }
+    .report-cta .btn-solid { background: var(--amber); color: var(--ink); box-shadow: none; }
+    .report-cta .btn-solid:hover { background: #E5A92B; }
+    .report-foot { max-width: 900px; margin: 0 auto; padding: 2.4rem 24px 3rem; font-size: 0.78rem; color: var(--muted); }
+    @media (max-width: 700px) {
+      .report { padding-top: 110px; }
+      .report-meta { grid-template-columns: 1fr 1fr; }
+      .sum-table th:nth-child(2), .sum-table td:nth-child(2) { display: none; }
+    }
+    /* a report is a document: always fully visible, printable, no entrance animation */
+    .reveal { opacity: 1; transform: none; transition: none; }
+    @media print {
+      .topbar, .report-cta, .btn { display: none !important; }
+      body { background: #fff; }
+      .report { padding-top: 0; max-width: none; }
+      .report-cover, .finding, .sum-table, .legend li { box-shadow: none; break-inside: avoid; }
+      .finding img { max-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar" id="topbar">
+    <div class="topbar-pill">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-word">Brou <em>Aerial&nbsp;Surveys</em></span>
+      </a>
+      <a class="btn btn-line btn-nav" href="./index.html#casestudy">← Back to site</a>
+    </div>
+  </header>
+
+  <main class="report">
+
+    <div class="report-cover reveal">
+      <p class="eyebrow">Survey record: sample document</p>
+      <h1>Roof survey record.</h1>
+      <div class="report-meta">
+        <div><span>Reference</span><strong>BAS-SR-SAMPLE</strong></div>
+        <div><span>Property</span><strong>Commercial warehouse, South East England</strong></div>
+        <div><span>Captured</span><strong>Summer 2026, dry &amp; clear</strong></div>
+        <div><span>Method</span><strong>5 structured flight passes</strong></div>
+        <div><span>Record</span><strong>37 stills &amp; video files</strong></div>
+        <div><span>Roof contact</span><strong>None</strong></div>
+      </div>
+      <p class="notice"><strong>This is a sample.</strong> The photographs are from a real survey, anonymised. The findings below show the format and depth you receive. Your report is written from scratch for your roof.</p>
+    </div>
+
+    <section class="report-section reveal">
+      <h2>How to read the ratings.</h2>
+      <ul class="legend">
+        <li><span class="tag tag-record">RECORD</span> Baseline evidence captured. Nothing in the imagery calls for action. The value is the dated record itself.</li>
+        <li><span class="tag tag-monitor">MONITOR</span> Worth photographing again at an agreed interval, so change, or no change, is proven rather than guessed.</li>
+        <li><span class="tag tag-refer">REFER</span> The imagery shows something your roofing contractor or surveyor should look at. We hand them the evidence.</li>
+      </ul>
+      <p class="legend-note">We report what the camera sees, at a resolution where individual fixings are visible. Structural judgements stay where they belong: with your surveyor or contractor, working from complete evidence.</p>
+    </section>
+
+    <section class="report-section reveal">
+      <h2>Summary of findings.</h2>
+      <table class="sum-table">
+        <thead>
+          <tr><th>Ref</th><th>Pass</th><th>Area</th><th>Rating</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>F1</td><td>03 · Perimeter</td><td>Edge trim &amp; gutter: cut edge corrosion</td><td><span class="tag tag-refer">REFER</span></td></tr>
+          <tr><td>F2</td><td>04 · Close inspection</td><td>Temporary coverings: fragile rooflight line</td><td><span class="tag tag-monitor">MONITOR</span></td></tr>
+          <tr><td>F3</td><td>02 · Adjacent</td><td>Sheet junction: previous repair</td><td><span class="tag tag-record">RECORD</span></td></tr>
+          <tr><td>F4</td><td>Ground · Interior</td><td>Rooflight line: internal cross-check</td><td><span class="tag tag-record">RECORD</span></td></tr>
+          <tr><td>F5</td><td>05 · Vertical</td><td>Full roof plane: vertical baseline</td><td><span class="tag tag-record">RECORD</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="report-section">
+      <h2 class="reveal">Findings.</h2>
+
+      <article class="finding reveal">
+        <img loading="lazy" decoding="async" src="./assets/corner-edge.webp" alt="Drone photograph looking down at a roof corner showing corroded edge trim and gutter junctions" />
+        <div class="finding-body">
+          <div class="finding-head"><h3>F1 · Edge trim &amp; gutter, cut edge corrosion</h3><span class="pass">Pass 03 · Perimeter</span><span class="tag tag-refer">REFER</span></div>
+          <p><strong>Observation:</strong> cut edge corrosion to the edge trim of the profiled metal sheeting at the corner junction, with coating delamination and surface corrosion extending along the drip edge towards the gutter sole. No perforation resolvable at capture resolution.</p>
+          <p><strong>Recommendation:</strong> refer to your roofing contractor to confirm the full extent and agree a repair strategy. Localised treatment of cut edge corrosion caught early is routine maintenance; left untreated it progresses to trim and gutter replacement. These frames are sharp enough to scope the work remotely before anyone quotes for access.</p>
+        </div>
+      </article>
+
+      <article class="finding reveal">
+        <img loading="lazy" decoding="async" src="./assets/coverings-close.webp" alt="Close-range drone photograph of temporary coverings secured over warehouse rooflights" />
+        <div class="finding-body">
+          <div class="finding-head"><h3>F2 · Temporary coverings, fragile rooflight line</h3><span class="pass">Pass 04 · Close inspection</span><span class="tag tag-monitor">MONITOR</span></div>
+          <p><strong>Observation:</strong> six temporary sheeted coverings installed over the in-line rooflights. At the date of survey all six are present and secured, fixings engaged, with no visible displacement, tearing or ponding. Rooflights are classed as fragile surfaces. Nothing contacted the roof during capture.</p>
+          <p><strong>Recommendation:</strong> coverings are a temporary measure, not a long-term solution, so re-fly the same line at an agreed interval so their condition, and the rooflights beneath, are evidenced by dated, comparable frames instead of foot traffic on a fragile roof.</p>
+        </div>
+      </article>
+
+      <article class="finding reveal">
+        <img loading="lazy" decoding="async" src="./assets/panel-detail.webp" alt="Detailed drone photograph of metal roof panels showing a repaired junction and fixings" />
+        <div class="finding-body">
+          <div class="finding-head"><h3>F3 · Sheet junction, previous repair</h3><span class="pass">Pass 02 · Adjacent</span><span class="tag tag-record">RECORD</span></div>
+          <p><strong>Observation:</strong> a previous repair is visible at the sheet junction, with patch application spanning the lap and fixing line. The repair reads continuous at capture resolution: no open joints or displaced fixings visible; individual fixings resolvable in the full-resolution still.</p>
+          <p><strong>Recommendation:</strong> none proposed from imagery. Retained as a baseline record for future monitoring. Any movement, weathering or sealant breakdown becomes comparable against today's dated frames.</p>
+        </div>
+      </article>
+
+      <article class="finding reveal">
+        <img loading="lazy" decoding="async" src="./assets/inside-rooflights.webp" alt="Interior photograph of the warehouse showing protective covers fitted beneath the rooflight line" />
+        <div class="finding-body">
+          <div class="finding-head"><h3>F4 · Rooflight line, internal cross-check</h3><span class="pass">Ground · Interior</span><span class="tag tag-record">RECORD</span></div>
+          <p><strong>Observation:</strong> internal elevation beneath the same rooflight line, interior protection in place. Cross-references F2: external covering and internal condition evidenced in a single visit, both sides of the fragile line.</p>
+          <p><strong>Recommendation:</strong> none proposed from imagery. The paired views let your contractor assess the rooflight line without opening up, and without anyone accessing the roof.</p>
+        </div>
+      </article>
+
+      <article class="finding reveal">
+        <img loading="lazy" decoding="async" src="./assets/vertical-line.webp" alt="Straight-down drone photograph of six temporary coverings fixed along a warehouse rooflight line" />
+        <div class="finding-body">
+          <div class="finding-head"><h3>F5 · Full roof plane, vertical baseline</h3><span class="pass">Pass 05 · Vertical</span><span class="tag tag-record">RECORD</span></div>
+          <p><strong>Observation:</strong> straight-down record of the full roof plane: sheet laps, rooflight lines and all six coverings countable in a single dated frame. It's the view no ladder ever gets.</p>
+          <p><strong>Recommendation:</strong> retain as the master baseline. Every future survey opens with the same frame for like-for-like comparison.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="report-section reveal">
+      <h2>What arrives with this report.</h2>
+      <ul class="plain-list">
+        <li>The full image set, 48&nbsp;MP stills and 4K video, organised into folders by flight pass</li>
+        <li>This findings summary, with every photograph referenced back to its pass</li>
+        <li>A private share link for you and anyone you choose: surveyor, contractor, insurer</li>
+        <li>Your imagery is never published or reused without written consent</li>
+      </ul>
+    </section>
+
+    <section class="report-section reveal">
+      <h2>Limitations.</h2>
+      <ul class="plain-list">
+        <li>A visual record of conditions on the capture date, not a structural survey or valuation</li>
+        <li>No surface was contacted; concealed and internal defects are outside the scope of imagery</li>
+        <li>Ratings indicate what the imagery shows, not engineering judgements</li>
+        <li>This document is a sample: findings text is illustrative of format and depth</li>
+      </ul>
+    </section>
+
+    <div class="report-cta reveal">
+      <h2>Want this record <em>for your roof?</em></h2>
+      <a class="btn btn-solid" href="./index.html#contact">Get a survey quote</a>
+    </div>
+  </main>
+
+  <p class="report-foot mono">© 2026 Brou Aerial Surveys · sample document. Photography from a genuine survey, anonymised; client confidentiality is standard. Flights conducted within UK CAA regulations.</p>
+
+  <script src="./app.js?v=20260703c"></script>
+</body>
+</html>

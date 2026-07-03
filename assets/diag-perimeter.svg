@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="'Spline Sans Mono','SF Mono',monospace">
+  <rect width="800" height="450" fill="#EFEAE0"/>
+  <!-- faint grid -->
+  <g stroke="#16455A" stroke-opacity="0.07" stroke-width="1">
+    <path d="M0 90H800M0 180H800M0 270H800M0 360H800"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450"/>
+  </g>
+  <!-- building: top-down profiled roof -->
+  <g transform="translate(190,105)">
+    <rect x="0" y="0" width="420" height="240" rx="10" fill="#DCD5C6" stroke="#16455A" stroke-opacity="0.35" stroke-width="2"/>
+    <!-- sheet profile lines -->
+    <g stroke="#16455A" stroke-opacity="0.18" stroke-width="2">
+      <path d="M42 8V232M84 8V232M126 8V232M168 8V232M210 8V232M252 8V232M294 8V232M336 8V232M378 8V232"/>
+    </g>
+    <!-- rooflight strips -->
+    <rect x="58" y="26" width="14" height="188" rx="4" fill="#FFFFFF" opacity="0.85"/>
+    <rect x="184" y="26" width="14" height="188" rx="4" fill="#FFFFFF" opacity="0.85"/>
+    <rect x="310" y="26" width="14" height="188" rx="4" fill="#FFFFFF" opacity="0.85"/>
+    <!-- ridge -->
+    <path d="M8 120H412" stroke="#16455A" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/>
+  </g>
+  <!-- perimeter flight path -->
+  <rect x="150" y="70" width="500" height="310" rx="26" fill="none" stroke="#16455A" stroke-width="2.5" stroke-dasharray="3 10" stroke-linecap="round"/>
+  <!-- direction arrows on path -->
+  <g fill="#16455A">
+    <path d="M400 62l14 8-14 8z"/>
+    <path d="M400 388l-14-8 14-8z" transform="rotate(180 400 384) translate(0 -8)" opacity="0"/>
+    <path d="M414 372l-14 8v-16z"/>
+  </g>
+  <!-- inspection waypoints at corners -->
+  <g fill="none" stroke="#F3B838" stroke-width="3">
+    <circle cx="150" cy="96" r="9"/>
+    <circle cx="650" cy="96" r="9"/>
+    <circle cx="150" cy="354" r="9"/>
+    <circle cx="650" cy="354" r="9"/>
+  </g>
+  <!-- drone marker -->
+  <g transform="translate(650,225)">
+    <circle r="17" fill="#16455A"/>
+    <path d="M0 -9V9M-9 0H9" stroke="#F3B838" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- gutter line callout -->
+  <g>
+    <path d="M613 225H565" stroke="#16455A" stroke-opacity="0.5" stroke-width="1.5"/>
+    <text x="560" y="229" text-anchor="end" font-size="15" fill="#16455A" letter-spacing="1">GUTTER LINE</text>
+  </g>
+  <!-- labels -->
+  <text x="760" y="46" text-anchor="end" font-size="16" fill="#16455A" letter-spacing="2">PASS 03 · PERIMETER &amp; EDGE LOOP</text>
+  <text x="150" y="416" font-size="14" fill="#59606A" letter-spacing="1.5">CLOSE RANGE · EVERY TRIM, GUTTER &amp; CORNER</text>
+</svg>

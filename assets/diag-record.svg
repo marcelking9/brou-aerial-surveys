@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="'Spline Sans Mono','SF Mono',monospace">
+  <rect width="800" height="450" fill="#EFEAE0"/>
+  <!-- faint grid -->
+  <g stroke="#16455A" stroke-opacity="0.07" stroke-width="1">
+    <path d="M0 90H800M0 180H800M0 270H800M0 360H800"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450"/>
+  </g>
+  <!-- three dated frames of the same roof -->
+  <g>
+    <!-- connecting timeline -->
+    <path d="M186 245H614" stroke="#16455A" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <!-- frame template x3 -->
+    <g transform="translate(90,140)">
+      <rect width="192" height="130" rx="14" fill="#FFFFFF" stroke="#16455A" stroke-opacity="0.3" stroke-width="2"/>
+      <rect x="18" y="18" width="156" height="94" rx="8" fill="#DCD5C6"/>
+      <path d="M50 24v82M86 24v82M122 24v82M158 24v82" stroke="#16455A" stroke-opacity="0.16" stroke-width="2"/>
+      <rect x="62" y="30" width="9" height="70" rx="3" fill="#FFFFFF" opacity="0.9"/>
+      <rect x="132" y="30" width="9" height="70" rx="3" fill="#FFFFFF" opacity="0.9"/>
+      <circle cx="96" cy="105" r="0" fill="#F3B838"/>
+      <text x="18" y="152" font-size="14" fill="#16455A" letter-spacing="1.5">BEFORE WORKS</text>
+    </g>
+    <g transform="translate(304,140)">
+      <rect width="192" height="130" rx="14" fill="#FFFFFF" stroke="#16455A" stroke-opacity="0.3" stroke-width="2"/>
+      <rect x="18" y="18" width="156" height="94" rx="8" fill="#DCD5C6"/>
+      <path d="M50 24v82M86 24v82M122 24v82M158 24v82" stroke="#16455A" stroke-opacity="0.16" stroke-width="2"/>
+      <rect x="62" y="30" width="9" height="70" rx="3" fill="#FFFFFF" opacity="0.9"/>
+      <rect x="132" y="30" width="9" height="70" rx="3" fill="#FFFFFF" opacity="0.9"/>
+      <!-- works markers -->
+      <rect x="56" y="52" width="21" height="14" rx="3" fill="#F3B838"/>
+      <rect x="126" y="72" width="21" height="14" rx="3" fill="#F3B838"/>
+      <text x="18" y="152" font-size="14" fill="#16455A" letter-spacing="1.5">DURING</text>
+    </g>
+    <g transform="translate(518,140)">
+      <rect width="192" height="130" rx="14" fill="#FFFFFF" stroke="#16455A" stroke-width="2.5"/>
+      <rect x="18" y="18" width="156" height="94" rx="8" fill="#DCD5C6"/>
+      <path d="M50 24v82M86 24v82M122 24v82M158 24v82" stroke="#16455A" stroke-opacity="0.16" stroke-width="2"/>
+      <rect x="62" y="30" width="9" height="70" rx="3" fill="#FFFFFF" opacity="0.9"/>
+      <rect x="132" y="30" width="9" height="70" rx="3" fill="#FFFFFF" opacity="0.9"/>
+      <!-- handover tick -->
+      <circle cx="160" cy="34" r="13" fill="#F3B838"/>
+      <path d="M154 34l4.5 4.5L167 30" fill="none" stroke="#191C1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="18" y="152" font-size="14" fill="#16455A" letter-spacing="1.5">HANDOVER</text>
+    </g>
+  </g>
+  <!-- same-angle camera markers above each frame -->
+  <g fill="#16455A">
+    <g transform="translate(186,108)"><circle r="11" fill="#16455A"/><path d="M0 -5V5M-5 0H5" stroke="#F3B838" stroke-width="2.4" stroke-linecap="round"/></g>
+    <g transform="translate(400,108)"><circle r="11" fill="#16455A"/><path d="M0 -5V5M-5 0H5" stroke="#F3B838" stroke-width="2.4" stroke-linecap="round"/></g>
+    <g transform="translate(614,108)"><circle r="11" fill="#16455A"/><path d="M0 -5V5M-5 0H5" stroke="#F3B838" stroke-width="2.4" stroke-linecap="round"/></g>
+  </g>
+  <text x="760" y="66" text-anchor="end" font-size="16" fill="#16455A" letter-spacing="2">DATED RECORD · SAME ANGLES, EVERY VISIT</text>
+  <text x="90" y="330" font-size="14" fill="#59606A" letter-spacing="1.5">EVIDENCE FOR LANDLORDS · CONTRACTORS · INSURERS</text>
+</svg>
