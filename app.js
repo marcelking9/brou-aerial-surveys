@@ -1,9 +1,11 @@
 /* Brou Aerial Surveys — interactions (v2) */
 
 /* ---------- lead delivery config ----------
-   WEB3FORMS_KEY: routes enquiries to Marcel's inbox (same free web3forms.com account as SunPack).
+   WEB3FORMS_KEY routes enquiries to the inbox configured at web3forms.com.
+   Reissue and verify the key for CONTACT_EMAIL before claiming form delivery there.
    Safe to be public — it only routes submissions to the configured inbox. */
 const WEB3FORMS_KEY = "6fa90567-ff9d-41c8-b224-adbe2066c3e8";
+const CONTACT_EMAIL = "surveybrouservices@outlook.com";
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -93,7 +95,7 @@ if (form && status) form.addEventListener("submit", (e) => {
       form.reset();
     })
     .catch(() => {
-      status.textContent = "Sorry, that didn't send. Please try again in a moment.";
+      status.innerHTML = `Sorry, that didn't send. Please try again or email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.`;
       status.classList.add("is-error");
     })
     .finally(() => {

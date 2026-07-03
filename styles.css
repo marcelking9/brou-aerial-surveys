@@ -555,6 +555,12 @@ h1 em, h2 em { font-style: italic; font-weight: 420; color: var(--deep); }
   .section { padding-top: 64px; }
 }
 
+/* ---------- contact email links ---------- */
+.contact-alt { margin-top: 1.2rem; font-size: 0.95rem; color: var(--muted); }
+.contact-alt a { color: var(--deep); font-weight: 700; }
+.footer-mail { display: inline-block; margin-top: 0.5rem; color: var(--amber); text-decoration: none; font-size: 0.9rem; }
+.footer-mail:hover { text-decoration: underline; }
+
 /* ---------- app feel ---------- */
 * { -webkit-tap-highlight-color: transparent; }
 html { -webkit-text-size-adjust: 100%; }
