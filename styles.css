@@ -513,7 +513,9 @@ html.js .reveal, html.js .reveal-stagger > * {
   opacity: 0; transform: translateY(22px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.is-in, .reveal-stagger.is-in > * { opacity: 1; transform: none; }
+/* must carry the same html.js gate as the hiding rule above, or the hiding
+   rule outranks it on specificity and scrolled-to sections never appear */
+html.js .reveal.is-in, html.js .reveal-stagger.is-in > * { opacity: 1; transform: none; }
 .reveal-stagger.is-in > *:nth-child(1) { transition-delay: 0s; }
 .reveal-stagger.is-in > *:nth-child(2) { transition-delay: 0.09s; }
 .reveal-stagger.is-in > *:nth-child(3) { transition-delay: 0.18s; }
