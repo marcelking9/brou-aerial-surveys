@@ -30,7 +30,9 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+/* no global smooth-scroll: it makes trackpad/wheel scrolling feel stop-start on
+   macOS. Anchor offset is kept via scroll-padding-top; nav jumps are instant. */
+html { scroll-padding-top: 96px; }
 
 body {
   font-family: var(--font-body);
@@ -510,8 +512,8 @@ h1 em, h2 em { font-style: italic; font-weight: 420; color: var(--deep); }
    Gated behind html.js (set by an inline script in <head>) so content stays
    visible when JavaScript is unavailable — no JS, no blank sections. */
 html.js .reveal, html.js .reveal-stagger > * {
-  opacity: 0; transform: translateY(22px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 /* must carry the same html.js gate as the hiding rule above, or the hiding
    rule outranks it on specificity and scrolled-to sections never appear */
