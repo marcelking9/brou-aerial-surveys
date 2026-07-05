@@ -607,3 +607,79 @@ html { -webkit-text-size-adjust: 100%; }
 
 /* ---------- inline links ---------- */
 .faq-list details p a { color: var(--deep); font-weight: 600; }
+
+/* ============================================================
+   PREMIUM ENTRANCE — brand curtain (once per session) + hero cascade
+   Mirrors the SunPack entrance so the two brands read as one studio.
+   No-JS: .intro stays display:none (html.js gate). Reduced-motion: skipped,
+   hero shown instantly. Repeat visits: intro-seen (set in <head>) hides it
+   with no flash. app.js only adds click/Esc skip + node cleanup.
+   ============================================================ */
+.intro { display: none; }
+html.js .intro {
+  display: flex; position: fixed; inset: 0; z-index: 200;
+  align-items: center; justify-content: center;
+  background: var(--deep-2);
+  animation: introCurtain 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+html.js.intro-seen .intro { display: none; }
+
+.intro-inner { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px; }
+.intro-mark {
+  width: 60px; height: 60px; border-radius: 16px; background: var(--paper); position: relative;
+  opacity: 0; transform: translateY(12px) scale(.92);
+  animation: introMark .85s cubic-bezier(0.16, 1, 0.3, 1) .1s forwards;
+}
+.intro-mark::before, .intro-mark::after { content: ""; position: absolute; background: var(--amber); border-radius: 3px; }
+.intro-mark::before { left: 50%; top: 12px; bottom: 12px; width: 5px; transform: translateX(-50%); }
+.intro-mark::after  { top: 50%; left: 12px; right: 12px; height: 5px; transform: translateY(-50%); }
+.intro-word {
+  font-family: var(--font-display); font-weight: 560; font-size: clamp(24px, 5vw, 40px);
+  color: #fff; text-align: center; letter-spacing: -0.01em;
+  opacity: 0; transform: translateY(12px);
+  animation: introMark .85s cubic-bezier(0.16, 1, 0.3, 1) .3s forwards;
+}
+.intro-word em { font-style: italic; font-weight: 420; color: var(--amber); }
+.intro-rule {
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  animation: introRule 1s cubic-bezier(0.16, 1, 0.3, 1) .55s forwards;
+}
+@keyframes introMark { to { opacity: 1; transform: none; } }
+@keyframes introRule { to { width: 200px; } }
+@keyframes introCurtain {
+  0%, 52%  { transform: translateY(0); }
+  100%     { transform: translateY(-101%); visibility: hidden; pointer-events: none; }
+}
+html.js .intro.is-skip { animation: introSkip .5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes introSkip { to { transform: translateY(-101%); visibility: hidden; pointer-events: none; } }
+
+/* hero cascade — pure CSS so it completes even if app.js never runs */
+html.js .hero-copy > .hero-badge,
+html.js .hero-copy > h1,
+html.js .hero-copy > .hero-sub,
+html.js .hero-copy > .hero-actions,
+html.js .hero-copy > .hero-trust,
+html.js .hero-media {
+  animation: heroRise .85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+/* first visit: hold until the curtain begins lifting (~1s) */
+html.js:not(.intro-seen) .hero-media               { animation-delay: 1.0s; }
+html.js:not(.intro-seen) .hero-copy > .hero-badge  { animation-delay: 1.05s; }
+html.js:not(.intro-seen) .hero-copy > h1           { animation-delay: 1.16s; }
+html.js:not(.intro-seen) .hero-copy > .hero-sub    { animation-delay: 1.28s; }
+html.js:not(.intro-seen) .hero-copy > .hero-actions{ animation-delay: 1.4s; }
+html.js:not(.intro-seen) .hero-copy > .hero-trust  { animation-delay: 1.5s; }
+/* repeat visit: quick entrance, no curtain */
+html.js.intro-seen .hero-media               { animation-delay: .05s; }
+html.js.intro-seen .hero-copy > .hero-badge  { animation-delay: .08s; }
+html.js.intro-seen .hero-copy > h1           { animation-delay: .16s; }
+html.js.intro-seen .hero-copy > .hero-sub    { animation-delay: .26s; }
+html.js.intro-seen .hero-copy > .hero-actions{ animation-delay: .36s; }
+html.js.intro-seen .hero-copy > .hero-trust  { animation-delay: .44s; }
+@keyframes heroRise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .intro { display: none; }
+  html.js .hero-copy > *, html.js .hero-media { animation: none !important; }
+}

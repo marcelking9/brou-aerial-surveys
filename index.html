@@ -16,7 +16,7 @@
   <meta name="twitter:description" content="Drone roof &amp; building surveys across London &amp; the South East. 48MP stills, 4K video, a record organised by flight pass." />
   <meta name="twitter:image" content="https://brou-aerial-surveys.netlify.app/assets/hero-estate.jpg" />
   <link rel="canonical" href="https://brou-aerial-surveys.netlify.app/" />
-  <script>document.documentElement.classList.add("js");</script>
+  <script>(function(){var d=document.documentElement;d.classList.add("js");try{if(sessionStorage.getItem("bas_intro_seen"))d.classList.add("intro-seen");else sessionStorage.setItem("bas_intro_seen","1");}catch(e){d.classList.add("intro-seen");}})();</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316455A'/%3E%3Cpath d='M16 7v18M7 16h18' stroke='%23F3B838' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
   <link rel="manifest" href="./manifest.json" />
   <link rel="apple-touch-icon" href="./assets/icon-180.png" />
@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,420;0,9..144,560;1,9..144,420&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=20260705a" />
+  <link rel="stylesheet" href="./styles.css?v=20260705b" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -62,6 +62,14 @@
 <body>
 
   <a class="skip-link" href="#top">Skip to content</a>
+
+  <div class="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <span class="intro-mark" aria-hidden="true"></span>
+      <span class="intro-word">Brou <em>Aerial&nbsp;Surveys</em></span>
+      <span class="intro-rule" aria-hidden="true"></span>
+    </div>
+  </div>
 
   <header class="topbar" id="topbar">
     <div class="topbar-pill">
@@ -372,6 +380,6 @@
     <p class="footer-fine mono">© 2026 Brou Aerial Surveys. Flights conducted within UK CAA regulations.</p>
   </footer>
 
-  <script src="./app.js?v=20260705a"></script>
+  <script src="./app.js?v=20260705b"></script>
 </body>
 </html>

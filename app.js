@@ -1,5 +1,19 @@
 /* Brou Aerial Surveys — interactions (v2) */
 
+/* ---------- premium intro curtain: click / Escape to skip, self-remove ----------
+   The curtain lifts purely via CSS (so it clears even if this never runs). This
+   only adds a fast-forward and removes the node from the DOM once it's gone. */
+(function () {
+  var intro = document.querySelector(".intro");
+  if (!intro || getComputedStyle(intro).display === "none") return;
+  var skip = function () { intro.classList.add("is-skip"); };
+  intro.addEventListener("click", skip);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") skip(); }, { once: true });
+  intro.addEventListener("animationend", function (e) {
+    if (e.target === intro) intro.remove();
+  });
+}());
+
 /* ---------- lead delivery config ----------
    WEB3FORMS_KEY routes enquiries to the inbox configured at web3forms.com.
    Reissue and verify the key for CONTACT_EMAIL before claiming form delivery there.
