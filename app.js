@@ -26,13 +26,18 @@ if (toggle && mobilenav) {
     toggle.setAttribute("aria-expanded", String(open));
     document.body.style.overflow = open ? "hidden" : "";
   });
-  mobilenav.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      mobilenav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    })
-  );
+  const closeNav = () => {
+    mobilenav.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
+  mobilenav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobilenav.classList.contains("is-open")) {
+      closeNav();
+      toggle.focus();
+    }
+  });
 }
 
 /* ---------- reveal on scroll ---------- */
@@ -52,7 +57,9 @@ if (form && status) form.addEventListener("submit", (e) => {
   const name = $("#cName").value.trim();
   const email = $("#cEmail").value.trim();
   const phone = $("#cPhone").value.trim();
-  const type = $("#cType").value;
+  const typeField = $("#cType");
+  const type = typeField.value;
+  const typeLabel = typeField.options[typeField.selectedIndex]?.text || type;
   const message = $("#cMessage").value.trim();
   status.classList.remove("is-error");
   ["#cName", "#cEmail"].forEach((s) => $(s).removeAttribute("aria-invalid"));
@@ -82,7 +89,7 @@ if (form && status) form.addEventListener("submit", (e) => {
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
     body: JSON.stringify({
       access_key: WEB3FORMS_KEY,
-      subject: `New drone survey enquiry: ${type}`,
+      subject: `New drone survey enquiry: ${typeLabel}`,
       from_name: "Brou Aerial Surveys website",
       name, email, phone, property_type: type, message,
       botcheck: ""
