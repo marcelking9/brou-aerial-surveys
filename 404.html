@@ -32,7 +32,13 @@
     <div class="mark" aria-hidden="true"></div>
     <h1>This page flew off course.</h1>
     <p>The page you were looking for doesn't exist. The whole survey record is one page anyway — everything is on the homepage.</p>
-    <a class="btn" href="/brou-aerial-surveys/">Back to Brou Aerial Surveys</a>
+    <a class="btn" id="homeLink" href="/">Back to Brou Aerial Surveys</a>
   </div>
+  <script>
+    /* served from two hosts: GitHub Pages under /brou-aerial-surveys/, Netlify at root */
+    if (location.hostname.endsWith("github.io")) {
+      document.getElementById("homeLink").href = "/brou-aerial-surveys/";
+    }
+  </script>
 </body>
 </html>
